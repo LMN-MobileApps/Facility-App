@@ -1,5 +1,13 @@
 # Facility App - API
 
+## Installation:
+
+$  cd Facility-Service
+
+$  npm install
+
+---
+
 ## Summary:
 
 
