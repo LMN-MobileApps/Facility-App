@@ -2,7 +2,7 @@
 
 ## Summary:
 
-This is a GraphQL implementation of the Box APIs (specifically, the NodeJS SDK) tailored towards serving data for the Osmose360 Knowledge Base.
+
 
 The app makes use of several popular javascript libraries, such as:
 
