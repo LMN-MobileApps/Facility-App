@@ -5,8 +5,8 @@ import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
   {
-    path: '/main/tabs/dashboard',
-    pathMatch: 'full',
+    path: '',
+    // pathMatch: 'full',
     component: DashboardPage
   }
 ];

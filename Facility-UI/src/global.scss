@@ -8,7 +8,7 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
+ 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -24,3 +24,828 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'Segoe Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Regular'), url('./assets/fonts/SegoePro-Regular.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Cond Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Cond Italic'), url('./assets/fonts/SegoePro-CondItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Italic'), url('./assets/fonts/SegoePro-Italic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Light'), url('./assets/fonts/SegoePro-Light.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Light Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Light Italic'), url('./assets/fonts/SegoePro-LightItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro SemiLight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro SemiLight'), url('./assets/fonts/SegoePro-Semilight.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro SemiLight Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro SemiLight Italic'), url('./assets/fonts/SegoePro-SemilightItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Semibold'), url('./assets/fonts/SegoePro-Semibold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Semibold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Semibold Italic'), url('./assets/fonts/SegoePro-SemiboldItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Bold'), url('./assets/fonts/SegoePro-Bold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Cond Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Cond Bold'), url('./assets/fonts/SegoePro-CondBold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Bold Italic'), url('./assets/fonts/SegoePro-BoldItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Cond Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Cond Bold Italic'), url('./assets/fonts/SegoePro-CondBoldItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Black'), url('./assets/fonts/SegoePro-Black.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Black Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Black Italic'), url('./assets/fonts/SegoePro-BlackItalic.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Display Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Display Regular'), url('./assets/fonts/SegoeProDisplay-Regular.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Display Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Display Light'), url('./assets/fonts/SegoeProDisplay-Light.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Display SemiLight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Display SemiLight'), url('./assets/fonts/SegoeProDisplay-Semilight.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Display Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Display Semibold'), url('./assets/fonts/SegoeProDisplay-Semibold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Segoe Pro Display Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Pro Display Bold'), url('./assets/fonts/SegoeProDisplay-Bold.woff') format('woff');
+    }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Segoe Pro Regular';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+  }
+  .clearfix{
+    clear: both;
+}
+ol,
+  ul,
+  dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol {
+    margin-bottom: 0;
+  }
+  a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  
+  a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  } 
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+  h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .list-inline {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .list-inline-item {
+    display: inline-block;
+  }
+  
+  .list-inline-item:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  .container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.float-left {
+    float: left;
+  }
+  
+  .float-right {
+    float: right;
+  }
+  
+  .float-none {
+    float: none !important;
+  }
+  .overflow-auto {
+    overflow: auto !important;
+  }
+  
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  
+  .position-static {
+    position: static !important;
+  }
+  
+  .position-relative {
+    position: relative !important;
+  }
+  
+  .position-absolute {
+    position: absolute !important;
+  }
+  
+  .position-fixed {
+    position: fixed !important;
+  }
+  .m-0 {
+    margin: 0 !important;
+  }
+  
+  .mt-0,
+  .my-0 {
+    margin-top: 0 !important;
+  }
+  
+  .mr-0,
+  .mx-0 {
+    margin-right: 0 !important;
+  }
+  
+  .mb-0,
+  .my-0 {
+    margin-bottom: 0 !important;
+  }
+  
+  .ml-0,
+  .mx-0 {
+    margin-left: 0 !important;
+  }
+  
+  .m-1 {
+    margin: 0.25rem !important;
+  }
+  
+  .mt-1,
+  .my-1 {
+    margin-top: 0.25rem !important;
+  }
+  
+  .mr-1,
+  .mx-1 {
+    margin-right: 0.25rem !important;
+  }
+  
+  .mb-1,
+  .my-1 {
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .ml-1,
+  .mx-1 {
+    margin-left: 0.25rem !important;
+  }
+  
+  .m-2 {
+    margin: 0.5rem !important;
+  }
+  
+  .mt-2,
+  .my-2 {
+    margin-top: 0.5rem !important;
+  }
+  
+  .mr-2,
+  .mx-2 {
+    margin-right: 0.5rem !important;
+  }
+  
+  .mb-2,
+  .my-2 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .ml-2,
+  .mx-2 {
+    margin-left: 0.5rem !important;
+  }
+  
+  .m-3 {
+    margin: 1rem !important;
+  }
+  
+  .mt-3,
+  .my-3 {
+    margin-top: 1rem !important;
+  }
+  
+  .mr-3,
+  .mx-3 {
+    margin-right: 1rem !important;
+  }
+  
+  .mb-3,
+  .my-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .ml-3,
+  .mx-3 {
+    margin-left: 1rem !important;
+  }
+  
+  .m-4 {
+    margin: 1.5rem !important;
+  }
+  
+  .mt-4,
+  .my-4 {
+    margin-top: 1.5rem !important;
+  }
+  
+  .mr-4,
+  .mx-4 {
+    margin-right: 1.5rem !important;
+  }
+  
+  .mb-4,
+  .my-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .ml-4,
+  .mx-4 {
+    margin-left: 1.5rem !important;
+  }
+  
+  .m-5 {
+    margin: 3rem !important;
+  }
+  
+  .mt-5,
+  .my-5 {
+    margin-top: 3rem !important;
+  }
+  
+  .mr-5,
+  .mx-5 {
+    margin-right: 3rem !important;
+  }
+  
+  .mb-5,
+  .my-5 {
+    margin-bottom: 3rem !important;
+  }
+  
+  .ml-5,
+  .mx-5 {
+    margin-left: 3rem !important;
+  }
+  
+  .p-0 {
+    padding: 0 !important;
+  }
+  
+  .pt-0,
+  .py-0 {
+    padding-top: 0 !important;
+  }
+  
+  .pr-0,
+  .px-0 {
+    padding-right: 0 !important;
+  }
+  
+  .pb-0,
+  .py-0 {
+    padding-bottom: 0 !important;
+  }
+  
+  .pl-0,
+  .px-0 {
+    padding-left: 0 !important;
+  }
+  
+  .p-1 {
+    padding: 0.25rem !important;
+  }
+  
+  .pt-1,
+  .py-1 {
+    padding-top: 0.25rem !important;
+  }
+  
+  .pr-1,
+  .px-1 {
+    padding-right: 0.25rem !important;
+  }
+  
+  .pb-1,
+  .py-1 {
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .pl-1,
+  .px-1 {
+    padding-left: 0.25rem !important;
+  }
+  
+  .p-2 {
+    padding: 0.5rem !important;
+  }
+  
+  .pt-2,
+  .py-2 {
+    padding-top: 0.5rem !important;
+  }
+  
+  .pr-2,
+  .px-2 {
+    padding-right: 0.5rem !important;
+  }
+  
+  .pb-2,
+  .py-2 {
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .pl-2,
+  .px-2 {
+    padding-left: 0.5rem !important;
+  }
+  
+  .p-3 {
+    padding: 1rem !important;
+  }
+  
+  .pt-3,
+  .py-3 {
+    padding-top: 1rem !important;
+  }
+  
+  .pr-3,
+  .px-3 {
+    padding-right: 1rem !important;
+  }
+  
+  .pb-3,
+  .py-3 {
+    padding-bottom: 1rem !important;
+  }
+  
+  .pl-3,
+  .px-3 {
+    padding-left: 1rem !important;
+  }
+  
+  .p-4 {
+    padding: 1.5rem !important;
+  }
+  
+  .pt-4,
+  .py-4 {
+    padding-top: 1.5rem !important;
+  }
+  
+  .pr-4,
+  .px-4 {
+    padding-right: 1.5rem !important;
+  }
+  
+  .pb-4,
+  .py-4 {
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .pl-4,
+  .px-4 {
+    padding-left: 1.5rem !important;
+  }
+  
+  .p-5 {
+    padding: 3rem !important;
+  }
+  
+  .pt-5,
+  .py-5 {
+    padding-top: 3rem !important;
+  }
+  
+  .pr-5,
+  .px-5 {
+    padding-right: 3rem !important;
+  }
+  
+  .pb-5,
+  .py-5 {
+    padding-bottom: 3rem !important;
+  }
+  
+  .pl-5,
+  .px-5 {
+    padding-left: 3rem !important;
+  }
+  
+  .m-n1 {
+    margin: -0.25rem !important;
+  }
+  
+  .mt-n1,
+  .my-n1 {
+    margin-top: -0.25rem !important;
+  }
+  
+  .mr-n1,
+  .mx-n1 {
+    margin-right: -0.25rem !important;
+  }
+  
+  .mb-n1,
+  .my-n1 {
+    margin-bottom: -0.25rem !important;
+  }
+  
+  .ml-n1,
+  .mx-n1 {
+    margin-left: -0.25rem !important;
+  }
+  
+  .m-n2 {
+    margin: -0.5rem !important;
+  }
+  
+  .mt-n2,
+  .my-n2 {
+    margin-top: -0.5rem !important;
+  }
+  
+  .mr-n2,
+  .mx-n2 {
+    margin-right: -0.5rem !important;
+  }
+  
+  .mb-n2,
+  .my-n2 {
+    margin-bottom: -0.5rem !important;
+  }
+  
+  .ml-n2,
+  .mx-n2 {
+    margin-left: -0.5rem !important;
+  }
+  
+  .m-n3 {
+    margin: -1rem !important;
+  }
+  
+  .mt-n3,
+  .my-n3 {
+    margin-top: -1rem !important;
+  }
+  
+  .mr-n3,
+  .mx-n3 {
+    margin-right: -1rem !important;
+  }
+  
+  .mb-n3,
+  .my-n3 {
+    margin-bottom: -1rem !important;
+  }
+  
+  .ml-n3,
+  .mx-n3 {
+    margin-left: -1rem !important;
+  }
+  
+  .m-n4 {
+    margin: -1.5rem !important;
+  }
+  
+  .mt-n4,
+  .my-n4 {
+    margin-top: -1.5rem !important;
+  }
+  
+  .mr-n4,
+  .mx-n4 {
+    margin-right: -1.5rem !important;
+  }
+  
+  .mb-n4,
+  .my-n4 {
+    margin-bottom: -1.5rem !important;
+  }
+  
+  .ml-n4,
+  .mx-n4 {
+    margin-left: -1.5rem !important;
+  }
+  
+  .m-n5 {
+    margin: -3rem !important;
+  }
+  
+  .mt-n5,
+  .my-n5 {
+    margin-top: -3rem !important;
+  }
+  
+  .mr-n5,
+  .mx-n5 {
+    margin-right: -3rem !important;
+  }
+  
+  .mb-n5,
+  .my-n5 {
+    margin-bottom: -3rem !important;
+  }
+  
+  .ml-n5,
+  .mx-n5 {
+    margin-left: -3rem !important;
+  }
+  
+  .m-auto {
+    margin: auto !important;
+  }
+  .text-justify {
+    text-align: justify !important;
+  }
+  
+  .text-wrap {
+    white-space: normal !important;
+  }
+  
+  .text-nowrap {
+    white-space: nowrap !important;
+  }
+  
+  .text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .text-left {
+    text-align: left !important;
+  }
+  
+  .text-right {
+    text-align: right !important;
+  }
+  
+  .text-center {
+    text-align: center !important;
+  }
+  .bg_pending{
+    background: #FF9E18;
+  }
+  .bg_success{
+    background: #007E44;
+  }
+  .bg_danger{
+    background: #D62015;
+  }
+  .text-pending{
+    color: #FF9E18;
+  }
+  .text-success{
+    color: #007E44;
+  }
+  .text-danger{
+    color: #D62015;
+  }
+  .text-primary{
+    color: #083176;
+  }
+  .w-100{
+      width: 100%;
+  }
+  .fnt-14{
+      font-size: 14px;
+  }
+  .fnt-16{
+    font-size: 14px;
+}
+.fnt-18{
+    font-size: 14px;
+}
+.fnt-20{
+    font-size: 14px;
+}
+.acTag{
+    color: #1c3766;
+    font-family: 'Segoe Pro Semibold';
+}
+.clearfix{
+    clear: both;
+}
+.float-left{
+    float: left
+}
+.float-right{
+    float: right
+}
+.d-flex{
+    display: flex;
+}
+.d-block{
+    display: block;
+}
+
+.mainContentWidth{
+    margin: auto;
+    padding: 10px;
+}
+
+.facilityTickets,.commonTickets{
+    background: #38C6F4;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+.commonTickets,.ticketGraph{
+    background: #fff;
+    color: #000;
+    box-shadow: 0px 0px 3px #dbdbdb;
+}
+.colorWhite{
+    color: #fff;
+}
+.t1{
+    font-size: 14px;
+}
+.t2{
+    font-size: 24px;
+}
+.t3{
+    font-size: 16px;
+}
+.bgContent{
+    --background: #FBFBFB;
+}
+.statusTickets{
+    background: #fff;
+    color: #000;
+    box-shadow: 0px 0px 3px #dbdbdb;
+}

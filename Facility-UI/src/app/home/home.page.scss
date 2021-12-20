@@ -1,27 +1,63 @@
-#container {
-  text-align: center;
+.bg-Screen{
+  background: #0C9ED9;
+  height: 100vh;    
+ }
+ .loginMain{
+     align-items: center;
+     margin: 1.75rem auto;
+     align-items: center;
+     min-height: calc(100% - 3.5rem);
+     max-width: 345px;
+     flex-direction: column;
+     justify-content: center;
+     img{
+         width: 250px;
+     }
+     ::ng-deep .item-label{
+         width: 100%;
+     }
+ }
+ .loginContent{
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     align-items: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
+   
+ 
+ }
+ 
+ ion-button{
+     --border-radius: 50px;
+     width: 100%;
+   }
+ion-button::part(native){
+   background: #fff;
+   color: #0C9ED9;
+   border: 2px solid #fff;
+ 
+   }
+   .adminIcon{
+     color: #0C9ED9;
+     position: absolute;
+     right: 10px;
+     top: 25px;
+     font-size: 20px;
+   }
+   .adminIconArrow{
+     top: 22px;
+     right: 22px;
+ }
+ 
+ .slogan {
+     font-size: 18px;
+     color: #9AD6EF;
+     margin: 0px 0px 25px 0px;
+ }
+ .title{
+     margin: 25px 0px 0px 0px;
+     font-weight: 600;
+     font-size: 20px;
+     color: #9AD6EF
+ }
