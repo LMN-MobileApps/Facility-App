@@ -1,5 +1,13 @@
 # Facility App - API
 
+## Installation:
+
+$  cd Facility-Service
+
+$  npm install
+
+---
+
 ## Summary:
 
 
@@ -47,5 +55,37 @@ Package is fully contained as a Docker image. The image can be deployed on any D
 ```
 
 - **routes**: contains the logic for interacting with the MongoDB; each folder contains an `.js` file which is the base class, other files in each directory inherit from the base class
+
+## MongoDB Config:
+Install mongoDB 4.2 and above.
+You can create your own admin user and password and update the mongoURL like below : 
+
+myUserAdmin:abc123@localhost:27017
+
+Create a mongodb database names efp
+
+Collection Name :  ticket-status(create multiple collection based on requirement)
+
+## Sample API:
+http://localhost/api/v1/ticket-status/getStatus
+
+// 20211214184504
+// http://localhost/api/v1/ticket-status/getStatus
+
+{
+  "message": "SUCCESS",
+  "result": [
+    {
+      "_id": "61b85af7c78f4cad84aa83cc",
+      "State": "State",
+      "ticketID": "cad84aa83cc61b85af7c78f4"
+    },
+    {
+      "_id": "61b85d90c78f4cad84aa83cd",
+      "State": "State",
+      "ticketID": "cad5af784cc7c78f6aa831b85af4"
+    }
+  ]
+}
 
 
