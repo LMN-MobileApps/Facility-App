@@ -32,7 +32,6 @@ app.use(errorHandler);
 
 //Routes and API Services
 app.use(require('./routes'));
-app.use(require('./api/routes/ticket-status/ticket-status'));
 app.use(require('./endpoint/facility-users-controller'));
 app.use(require('./endpoint/master-data-controller'));
 
