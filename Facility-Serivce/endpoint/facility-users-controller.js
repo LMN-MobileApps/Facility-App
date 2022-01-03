@@ -1,6 +1,5 @@
 const express = require('express');
 var router = express.Router();
-var ObjectId = require('mongodb').ObjectId;
 
 const UserService = require("../service/facility-users-service");
 
