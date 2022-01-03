@@ -1,6 +1,5 @@
 //const mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
-const { router } = require('../express-app');
 var mongoCon = require('../db-connection.json');
 // var Schema = mongoose.Schema;
 
