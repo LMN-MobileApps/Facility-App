@@ -82,7 +82,7 @@ module.exports = class MasterDataRepository {
             if (err) throw err;
             var dbo = db.db(mongoCon.targetDB);
     
-            dbo.collection(mongoCon.loadCollection.ticket_staus).find({}).toArray(function(err, docs) {
+            dbo.collection(mongoCon.loadCollection.ticket_status).find({}).toArray(function(err, docs) {
                 if (err) { throw err;}
                 else {
                     callback(docs);

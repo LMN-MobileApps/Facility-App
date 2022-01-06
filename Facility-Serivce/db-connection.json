@@ -3,7 +3,7 @@
     "loadCollection": { 
             "facility_users": "facility_users",
             "ticket_problem_type": "ticket_problem_type",
-            "ticket_staus": "ticket_staus",
+            "ticket_status": "ticket_status",
             "location_floor": "location_floor",
             "location": "location",
             "ticket_services": "ticket_services",
