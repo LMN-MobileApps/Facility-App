@@ -1,4 +1,6 @@
 const UserRepository = require("../repository/facility-users-repository");
+var user=require("../assets/user.json");
+var user=require("../assets/user-role.json");
 
 var userList = [];
 class UserResponse {
@@ -33,4 +35,20 @@ module.exports = class UserService {
             callback({"userRole": result.userRole});
         })
     }
+
+    getRoleOfUser(id,pass,callback){
+       var repo=new UserRepository();
+       repo.getUserById(id,pass,function(result){
+           if(result)
+           {
+            repo.getRole(id,function(result){
+                callback(result);
+            });
+           }
+           else{
+               callback();
+           }
+       });
+    }
+ 
 }
