@@ -16,5 +16,11 @@ router.get('/getUserRoleById/:id', (req, res) => {
         res.send(result);
     })
 });
+router.get('/userLogin', function(req, res){
+    var svc = new UserService();
+    svc.getRoleOfUser(req.body.id,req.body.password,function(result) {
+        res.send(result);
+    })
+});
 
 module.exports = router;
