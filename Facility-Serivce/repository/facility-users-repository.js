@@ -1,16 +1,7 @@
-//const mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
-const { router } = require('../express-app');
 var mongoCon = require('../db-connection.json');
-// var Schema = mongoose.Schema;
-
-// var schema = new Schema({
-//     userId: {type: String},
-//     userRole: {type: String},
-//     active: {type: Boolean}
-//  }, { strict: false, '__v': false });
-
-// var FacilityUser = mongoose.model(mongoCon.loadCollection.facility_users, schema, mongoCon.loadCollection.facility_users);
+var user=require("../assets/user.json");
+var userRole=require("../assets/user-role.json");
 
 module.exports = class UserRepository {
     getAllUsers(callback) {
@@ -42,4 +33,35 @@ module.exports = class UserRepository {
             });
         });
     }
+    getUserById(id,pass,callback){
+        let flag=0;
+        for(let i=0;i<user.length;i++)
+        {
+            if(user[i].userid==id)
+            {
+                if(user[i].password==pass){
+                    flag=1;
+                }
+            }
+        }
+
+        if(flag==1)
+        {
+            callback(true);
+        }
+        else{
+            callback(false);
+        }
+    }
+    getRole(id,callback){
+        let i;
+        for(i=0;i<userRole.length;i++)
+        {
+            if(userRole[i].userid==id)
+            {
+                callback(userRole[i].role);
+            }
+        }
+    }
+
 } 
