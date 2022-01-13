@@ -1,6 +1,7 @@
 const TicketRepository = require("../repository/facility-tickets-repository");
 const MasterDataRepository = require("../repository/master-data-repository");
 var userRole=require("../assets/user-role.json");
+const FacilityUserRepository=require("../repository/facility-users-repository");
 
 result=[];
 resArray=[]
@@ -65,9 +66,22 @@ module.exports = class TicketService {
     }
 
 
-    getStatusTickets(callback) {
+    getStatusTickets(id,callback) {
+       var userrepo=new FacilityUserRepository();
         resArray=[];
+        var role;
         var repo=new TicketRepository();
+        userrepo.getRole(id,function(r){
+            role=r.role;
+        });
+        console.log(role);
+        if(role=="Employee")
+        {
+            repo.getStatusTicketsForEmployee(id, function(result) {
+                callback(result);
+            });
+        }
+        else{
         repo.getTicketsWithStatusTypeAndProblemType(function(res){
             res.forEach(res=>{
                 res.statusType=res.statusType[0].statusType;
@@ -88,12 +102,6 @@ module.exports = class TicketService {
             callback(resArray);
         });
     }
-
-    getStatusTicketsForEmployee(id,callback){
-        var repo = new TicketRepository();
-        repo.getStatusTicketsForEmployee(id, function(result) {
-            callback(result);
-        });
     }
 
 }

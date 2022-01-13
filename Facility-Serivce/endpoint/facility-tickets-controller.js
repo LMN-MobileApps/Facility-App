@@ -23,16 +23,9 @@ router.post('/dashboard', function(req, res) {
     });
 });
 
-router.get('/status', function(req, res) {
+router.post('/status', function(req, res) {
     var svc = new TicketService();
-    svc.getStatusTickets( function(result) {
-        res.send(result);
-    });
-});
-
-router.post('/statusForEmployee',function(req,res){
-    var svc = new TicketService();
-    svc.getStatusTicketsForEmployee(req.body.id, function(result) {
+    svc.getStatusTickets(req.body.id, function(result) {
         res.send(result);
     });
 });
