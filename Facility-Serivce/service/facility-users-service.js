@@ -1,5 +1,4 @@
 const UserRepository = require("../repository/facility-users-repository");
-var user=require("../assets/user.json");
 var user=require("../assets/user-role.json");
 
 var userList = [];
@@ -46,9 +45,31 @@ module.exports = class UserService {
             });
            }
            else{
-               callback();
+               callback("User ID or Password Invalid");
            }
        });
     }
- 
+    getFeedback(callback) {
+        var repo=new UserRepository();
+        repo.getFeedback(function(result) {
+            var resArray = [];
+            result.forEach( r => {
+                user.forEach( u => {
+                    if(u.userid == r._id) {
+                        closedTickets=getClosedTickets(r._id,"Resolved");
+                        pendingTickets=getClosedTickets(r._id,"Pending");
+                        resArray.push({"userId": r._id, "name": u.name, "ratings": parseFloat(r.ratings.toFixed(2)), "role": u.role});
+                    }
+                });
+            });
+            callback(resArray);
+        });
+    }
+
+    getTeamAwards(callback){
+        var repo=new UserRepository();
+        repo.getTeamAwards(function(res){
+            callback(res);
+        })
+    }
 }

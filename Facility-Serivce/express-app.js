@@ -35,6 +35,7 @@ app.use(require('./routes'));
 // app.use(require('./api/routes/ticket-status/ticket-status'));
 app.use(require('./endpoint/facility-users-controller'));
 app.use(require('./endpoint/master-data-controller'));
+app.use(require('./endpoint/facility-tickets-controller'));
 
 // Port Configuration
 let port=0;

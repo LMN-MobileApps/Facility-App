@@ -1,17 +1,30 @@
 [{
     "userid":"AC96702",
+    "name":"Aditya Singh",
+    "email": "adityaSingh@lumen.com",
     "role":"Employee"
 },
 {
     "userid":"AC96703",
+    "name":"Abhishek Mehra",
+    "email": "abhishekMehra@lumen.com",
     "role":"Employee"
-},{
+},
+{
     "userid":"AC96704",
+    "name":"Administrator",
+    "email": "adityaSingh@lumen.com",
     "role":"Admin"
-},{
+},
+{
     "userid":"AC96705",
+    "name":"Vivek Satyam",
+    "email": "vivekSatyam@lumen.com",
     "role":"Facility Team"
-},{
+},
+{
     "userid":"AC96706",
+    "name":"Vikram Singh",
+    "email": "vikramSingh@lumen.com",
     "role":"Facility Team"
 }]

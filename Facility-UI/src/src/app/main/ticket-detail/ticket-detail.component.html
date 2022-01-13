@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="d-flex alignItems">
+
+        <ion-icon name="arrow-back-outline" (click)="dismissModal()" class="arrow-back-outline"></ion-icon>
+        <div class="titleLeft ml-3">
+          <strong>TICKET {{ticketDetails.ticketId}}</strong>
+          <div class="fnt-12px">Problem Type: <strong>{{ticketDetails.problemType}}</strong></div>
+        </div>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <div class="d-flex alignItems mr-3">
+        <ion-icon name="stopwatch-outline" class="fnt-18"></ion-icon>
+        <div class="titleLeft ml-3 text-center">
+          <div class="c1">Estimated time</div>
+          <strong class="fnt-12px text-pending">00:00:20</strong>
+        </div>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ml-4 mt-4">
+    <div class="step1 position-relative mb-4">
+      <div class="lineDotted"></div>
+      <div class="d-flex">
+        <ion-icon name="location-outline" class="fnt-18 mt-1 cl2"></ion-icon>
+        <div class="titleLeft ml-3 cl1">
+          <div class="c1">Employee - <strong>{{ticketDetails.employeeName}}</strong></div>
+          <div class="c1">Ticket Placed - {{ticketDetails.createdDate}} </div>
+          <div class="c1">{{ticketDetails.problemDescription}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step1 position-relative mb-4">
+      <div class="lineDotted"></div>
+      <div class="d-flex">
+        <ion-icon name="person-circle-outline" class="fnt-18 mt-1 cl2"></ion-icon>
+        <div class="titleLeft ml-3 cl1">
+          <div class="c1">Facility Manager - <strong>{{ticketDetails.reportsTo}}</strong></div>
+          <!-- TODO: Check -->
+          <div class="c1" *ngIf="ticketDetails.statusCode !== 'created'">Verified & Assigned - {{ticketDetails.assignedDate}} </div>
+        </div>
+      </div>
+    </div>
+    <div class="step1 position-relative mb-4">
+      <div class="lineDotted"></div>
+      <div class="d-flex">
+        <ion-icon name="people-outline" class="fnt-18 mt-1 text-pending"></ion-icon>
+        <div class="titleLeft ml-3 cl1">
+          <div class="c1">Assigned to - <strong>{{ticketDetails.assignedTo}}</strong></div>
+          <div class="c1">Status - <span class="text-pending">{{ticketDetails.statusCode}}</span> </div>
+        </div>
+      </div>
+    </div>
+    <!-- TODO: COndition if only ticket is assigned and work in progress -->
+    <div class="step1 position-relative">
+
+      <div class="d-flex">
+        <ion-icon name="checkmark-outline" class="fnt-18 mt-1"></ion-icon>
+        <div class="titleLeft ml-3 cl1">
+
+          <div class="c1">Ticket on Progress</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center pt-3 pb-3 mt-4 mb-3 bg1">
+    <ion-icon name="ticket-outline"></ion-icon>&nbsp;&nbsp;
+    TICKET SETTINGS
+  </div>
+  <div class="fSettings">
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="catg_box">
+          <label>
+            Problem Type *
+          </label>
+          <ion-item class="iconItem">
+            <ion-select [interfaceOptions]="customPopoverOptions" 
+              interface="popover" placeholder="Select One" [(ngModel)]="status">
+              <ion-select-option value="resolved">Resolved</ion-select-option>
+              <ion-select-option value="pending">Pending</ion-select-option>
+              <ion-select-option value="rejected">Rejected</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <label>
+          Comments *
+        </label>
+        <ion-textarea rows="2" class="inputText" placeholder="Please provide comments" [(ngModel)]="comments"></ion-textarea>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button class="mt-3 btnBlue" (click)="submitTicketComments()" [disabled]="!status || comments.trim().length < 2">SUBMIT</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

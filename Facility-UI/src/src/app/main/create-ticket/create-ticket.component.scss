@@ -1,0 +1,75 @@
+.btnBlue{
+    width: 100%;
+  }
+  .btnBlue::part(native){
+  background: #1C3766;
+  color: #fff;
+  }
+  .iconItem{
+    --min-height: 32px;
+    ion-select{
+        width: 100%;
+    }
+}
+.inputTextOne{
+    &:before{
+    content: 'Floor no:';
+    margin-left: 10px;
+}
+}
+.inputTextTwo{
+    &:before{
+    content: 'Floor no:';
+    margin-left: 10px;
+}
+}
+.location{
+    position: absolute;
+    right: 14px;
+    background: #fff;
+    /* top: 0px; */
+}
+.datePic{
+    top: 38px;
+    right: 22px;
+    font-size: 22px;
+    background: transparent;
+    z-index: 9;
+    color: #757575;
+}
+.catg_box{
+    ion-item::part(native){
+        --background: transparent;
+        padding-right: 0px;
+        border: 1px solid #C1C0C0;
+        border-radius: 3px;
+    }
+    .item-inner{
+        padding-right: 0px;
+        border: 0px;
+    }
+}
+
+.inputText{
+    border: 1px solid #C1C0C0;
+    border-radius: 3px; 
+    padding-left: 1rem; 
+    margin-top: 0px;
+}
+.inputText-1 {
+    padding: 0px;
+::ng-deep .searchbar-input {
+    border: 1px solid #C1C0C0;
+    border-radius: 3px;
+    box-shadow: none; 
+}
+
+}
+.error-border-class {
+    border: 1px solid red;
+    border-radius: 3px;
+}
+.inputTextDisabled{
+    --background: #f2f2f2;
+    color: #000;
+}

@@ -7,14 +7,34 @@ router.get('/getAllFacilityTickets', function(req, res) {
     svc.getAllTickets( function(result) {
         res.send(result);
     });
-})
+});
 
 router.post('/createTicket', function(req, res) {
     var svc = new TicketService();
-    console.log(req.body);
-    svc.createTicket( req.body, function(result) {
+    svc.createTicket(req.body, function(result) {
         res.send(result);
     });
-})
+});
+
+router.post('/dashboard', function(req, res) {
+    var svc = new TicketService();
+    svc.dashboard(req.body.id, function(result) {
+        res.send(result);
+    });
+});
+
+router.get('/status', function(req, res) {
+    var svc = new TicketService();
+    svc.getStatusTickets( function(result) {
+        res.send(result);
+    });
+});
+
+router.post('/statusForEmployee',function(req,res){
+    var svc = new TicketService();
+    svc.getStatusTicketsForEmployee(req.body.id, function(result) {
+        res.send(result);
+    });
+});
 
 module.exports = router;

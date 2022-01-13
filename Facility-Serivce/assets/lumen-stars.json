@@ -1,0 +1,16 @@
+[{
+    "userid":"AC96707",
+    "awards":[{"awardName":"Positive Attitude","receiveddate":"2021-01-02"}]
+},
+{
+    "userid":"AC96702",
+    "awards":[{"awardName":"Growth mindset","receiveddate":"2021-04-18"}]
+    
+},{
+    "userid":"AC96705",
+    "awards":[{"awardName":"Positive Attitude","receiveddate":"2021-12-09"},
+              {"awardName":"Perserverance","receiveddate":"2021-04-08"}]
+},{
+    "userid":"AC96706",
+    "awards":[{"awardName":"Positive Attitude","receiveddate":"2022-04-16"}]
+}]

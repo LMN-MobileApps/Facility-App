@@ -7,7 +7,8 @@
             "location_floor": "location_floor",
             "location": "location",
             "ticket_services": "ticket_services",
-            "facility_tickets": "facility_tickets" 
+            "facility_tickets": "facility_tickets",
+            "facility_feedback": "facility_feedback"
         },
     "targetDB": "lumen_facility"
 }
