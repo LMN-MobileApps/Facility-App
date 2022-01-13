@@ -36,11 +36,13 @@ module.exports = class UserRepository {
     }
     getUserById(id,pass,callback){
         let flag=0;
+        
         for(let i=0;i<user.length;i++)
         {
             if(user[i].userid==id)
             {
                 if(user[i].password==pass){
+                   
                     flag=1;
                 }
             }
@@ -60,7 +62,7 @@ module.exports = class UserRepository {
         {
             if(userRole[i].userid==id)
             {
-                callback(userRole[i].role);
+                callback(userRole[i]);
             }
         }
     }

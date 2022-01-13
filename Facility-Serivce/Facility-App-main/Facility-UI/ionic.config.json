@@ -1,7 +1,0 @@
-{
-  "name": "facility-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
