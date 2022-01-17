@@ -59,19 +59,7 @@ module.exports = class TicketService {
             });
         });
     }
-
-    getCategoryTickets(userId, userRole, category, callback) {
-        var repo = new TicketRepository(); 
-        repo.getCategoryTickets(category, function(result) {
-            if(userRole == "Admin") {
-                callback(result);
-            }
-            else if(userRole == "Employee") {
-
-            }
-        });
-    }
-
+    
     editTicket(ticketObj, callback) {
         var repo = new TicketRepository();
         repo.editTicket(ticketObj, function(result) {
