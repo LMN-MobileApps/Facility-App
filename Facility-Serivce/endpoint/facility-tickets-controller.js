@@ -11,21 +11,21 @@ router.get('/getAllFacilityTickets', function(req, res) {
 
 router.post('/createTicket', function(req, res) {
     var svc = new TicketService();
-    svc.createTicket(req.body, function(result) {
+    svc.createTicket( req.body, function(result) {
         res.send(result);
     });
 });
 
-router.post('/dashboard', function(req, res) {
+router.post('/dashboardFilter', function(req, res) {
     var svc = new TicketService();
-    svc.dashboard(req.body.id, function(result) {
+    svc.getCategoryTicketsCount(req.body.category, req.body.userId, function(result) {
         res.send(result);
     });
 });
 
-router.post('/status', function(req, res) {
+router.put('/editTicket', function(req, res) {
     var svc = new TicketService();
-    svc.getStatusTickets(req.body.id, function(result) {
+    svc.editTicket(req.body, function(result) {
         res.send(result);
     });
 });

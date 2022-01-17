@@ -19,17 +19,18 @@
       <ion-row>
         <ion-col>
           <div class="dateTime">
-            Monday, 15th 2021, 20:06 
+            {{dateTime}}
           </div>
         </ion-col>
         
-        <ion-col>
+        <ion-col *ngIf="(currentpage == 'dashboard' || currentpage === 'main') || currentpage == 'status'">
           <div class="w-100 text-right position-relative catg_box">
             <ion-item class="iconItem">
-              <ion-select class="iconSelecct" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="All Categories">
-                <ion-select-option value="red">Report Damage</ion-select-option>
-                <ion-select-option value="purple">Report Issue</ion-select-option>
-                <ion-select-option value="yellow">Request Seat Change</ion-select-option>
+              <ion-select class="iconSelecct" [interfaceOptions]="customPopoverOptions" 
+                interface="popover" placeholder="All Categories" (ionChange)="filterByProblemType($event)">
+                <ion-select-option value="All Categories">All Categories</ion-select-option>
+                <ion-select-option *ngFor="let pTypes of problemTypes" 
+                  [value]="pTypes.problemType" [disabled]="pTypes.problemCode == 'PRO01'">{{pTypes.problemType}}</ion-select-option>
               </ion-select>
             </ion-item>
           </div>
@@ -40,7 +41,7 @@
 </ion-header>
 
 <ion-content>
-<ion-tabs class="footerTabs">
+<ion-tabs class="footerTabs" #tabs (ionTabsDidChange)="setCurrentTab()">
   <ion-tab-bar slot="dashboard">
     <ion-tab-button tab="dashboard">
       <ion-icon name="grid-outline"></ion-icon>
@@ -55,7 +56,7 @@
     <ion-tab-button tab="status">
       <ion-icon name="list"></ion-icon>
       <ion-label class="textTitle">Status</ion-label>
-      <ion-badge>6</ion-badge>
+      <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
 
     <ion-tab-button tab="settings">

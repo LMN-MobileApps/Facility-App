@@ -9,16 +9,16 @@
     - Lorem ipsum dolor slogan goes here -
   </div>
 
-  <div class="position-relative w-100 mb-3">
-  <ion-button expand="block" color="light" size="large">MY TICKETS</ion-button>
+  <div class="position-relative w-100 mb-3" (click)="redirectToTabs('status', 'myTickets')">
+  <ion-button expand="block" color="light" size="large" class="btnWhite">MY TICKETS</ion-button>
   <ion-icon name="arrow-forward-outline" class="adminIcon adminIconArrow"></ion-icon>
   </div>
-  <div class="position-relative w-100 mb-3">
-    <ion-button expand="block" color="light" size="large">CREATE TICKETS</ion-button>
+  <div class="position-relative w-100 mb-3" (click)="redirectToTabs('create-ticket')">
+    <ion-button expand="block" color="light" size="large" class="btnWhite">CREATE TICKETS</ion-button>
     <ion-icon name="arrow-forward-outline" class="adminIcon adminIconArrow"></ion-icon>
     </div>
-    <div class="position-relative w-100">
-      <ion-button expand="block" color="light" size="large">DASHBOARD</ion-button>
+    <div class="position-relative w-100" (click)="redirectToTabs('dashboard')">
+      <ion-button expand="block" color="light" size="large" class="btnWhite">DASHBOARD</ion-button>
       <ion-icon name="arrow-forward-outline" class="adminIcon adminIconArrow"></ion-icon>
       </div>
 </div>

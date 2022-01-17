@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { StatusPageRoutingModule } from './status-routing.module';
 
 import { StatusPage } from './status.page';
+import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { StatusPage } from './status.page';
     IonicModule,
     StatusPageRoutingModule
   ],
-  declarations: [StatusPage]
+  declarations: [StatusPage, TicketDetailComponent],
+  entryComponents: [TicketDetailComponent]
 })
 export class StatusPageModule {}

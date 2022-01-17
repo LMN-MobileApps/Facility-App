@@ -1,23 +1,25 @@
-<ion-header>
+<ion-header class="titcketHeader">
   <ion-toolbar>
     <div class="clearfix">
       <div class="float-left">
-    <ion-title class="pt-3">TICKET STATUS</ion-title>
+        <div class="pt-3 pl-2 ionTitle">TICKET STATUS</div>
       </div>
-      <div class="float-right">
+      <div class="float-right catg_box">
         <ion-list>
-        
-          <ion-item>
-            <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="MY TICKETS (10)">
-              <ion-select-option value="brown">All</ion-select-option>
-              <ion-select-option value="blonde">My Tickets</ion-select-option>
-              <ion-select-option value="black">Pending</ion-select-option>
-              <ion-select-option value="black">Resolved</ion-select-option>
-              <ion-select-option value="black">Rejected</ion-select-option>
+
+          <ion-item class="iconItem">
+            <!-- <ion-label position="floating">{{filterByTicketType}} ({{ticketStatusData.length}})</ion-label> -->
+            <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" #C (ionChange)="onChange(C.value)"
+              [(ngModel)]="filterByTicketType">
+              <ion-select-option value="All">All</ion-select-option>
+              <ion-select-option value="myTickets">My Tickets</ion-select-option>
+              <ion-select-option value="Pending">Pending</ion-select-option>
+              <ion-select-option value="Resolved">Resolved</ion-select-option>
+              <ion-select-option value="Rejected">Rejected</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-          </div>
+      </div>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -25,117 +27,73 @@
 <ion-content class="bgContent">
   <div class="mainContentWidth">
     <ion-grid>
-     
-      <ion-row>
+
+      <ion-row *ngIf="ticketStatusData.length >= 1">
         <ion-col size="12">
-          <div class="statusTickets mb-3">
+          <div class="statusTickets mb-3" *ngFor="let tStats of ticketStatusData">
 
             <div class="ticketStatus">
               <ul class="list-inline">
-                <li class="list-inline-item"><small class="bg_pending">Pending</small></li>
-                <li class="list-inline-item"> <ion-icon name="pencil-outline"></ion-icon> </li>
-                <li class="list-inline-item"><ion-icon name="stopwatch-outline"></ion-icon> </li>
+                <li class="list-inline-item mr-3"><small class="bg_pending">{{tStats.statusCode}}</small></li>
+                <li class="list-inline-item mr-3">
+                  <ion-icon name="create-outline" class="createOutline" (click)="redirectTo('create-ticket', tStats)">
+                  </ion-icon>
+                </li>
+                <li class="list-inline-item">
+                  <ion-icon name="stopwatch-outline" class="stopwatchOutline" (click)="openModal(tStats.ticketId)">
+                  </ion-icon>
+                </li>
               </ul>
             </div>
 
             <div class="p-2">
               <div class="d-flex">
                 <div class="fl1">
-                <img src="https://dummyimage.com/30x30" alt="Profile Pic"/>
+                  <img src="https://dummyimage.com/30x30" alt="Profile Pic" />
                 </div>
                 <div class="fl2">
-                <a class="d-block" href="javascript: void(0);">John Peterson</a>
-                <small class="d-block">Peterson.john@lumen.com</small>
+                  <a class="d-block" href="javascript: void(0);"><strong>{{tStats.tName}}</strong></a>
+                  <small class="d-block">{{tStats.eMail}}</small>
                 </div>
               </div>
               <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Ticket Id  <a href="javascript: void(0);">LT_1021</a> </li>
+                <li class="list-inline-item">Ticket Id <a
+                    href="javascript: void(0);"><strong>{{tStats.ticketId}}</strong></a> </li>
                 <li class="list-inline-item"> | </li>
-                <li class="list-inline-item">Emp. Id <strong>AC223300</strong> </li>
+                <li class="list-inline-item">Emp. Id <strong>{{tStats.employeeID}}</strong> </li>
               </ul>
               <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Problem Type   </li>
-                <li class="list-inline-item"><strong>Request Change Seat</strong> </li>
+                <li class="list-inline-item">Problem Type </li>
+                <li class="list-inline-item"><strong>{{tStats.problemDescription}}</strong> </li>
               </ul>
               <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Created on <strong>06/20/2021</strong> </li>
+                <li class="list-inline-item">Created on <strong>{{tStats.createdDate}}</strong> </li>
                 <li class="list-inline-item"> | </li>
-                <li class="list-inline-item">Facility   <strong>Vikaram Singh</strong> </li>
+                <li class="list-inline-item">Facility <strong>{{tStats.assignedTo}}</strong> </li>
               </ul>
             </div>
             <div class="ticketFooter">
               <div class="clearfix hgt25">
-                <div class="float-left">
-                  Medium
+                <div class="float-left mt-1">
+                  <strong>{{tStats.priority}}</strong>
                 </div>
                 <div class="float-right">
                   <ul class="list-inline mb-1 mt-1">
-                    <li class="list-inline-item">
-                      Manager  <strong>Smith, williams</strong>
+                    <li class="list-inline-item managerName">
+                      Manager <strong>{{tStats.reportsTo}}</strong>
                     </li>
-                    <li class="list-inline-item">
-                      <ion-icon name="attach"></ion-icon>
+                    <li class="list-inline-item" (click)="openViewModal()">
+                      <ion-icon name="attach" class="attachment"></ion-icon>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div class="statusTickets mb-3">
 
-            <div class="ticketStatus">
-              <ul class="list-inline">
-                <li class="list-inline-item"><small class="bg_success">Resolved</small></li>
-                <li class="list-inline-item"> <ion-icon name="pencil-outline"></ion-icon> </li>
-                <li class="list-inline-item"><ion-icon name="stopwatch-outline"></ion-icon> </li>
-              </ul>
-            </div>
-
-            <div class="p-2">
-              <div class="d-flex">
-                <div class="fl1">
-                <img src="https://dummyimage.com/30x30" alt="Profile Pic"/>
-                </div>
-                <div class="fl2">
-                <a class="d-block" href="javascript: void(0);">John Peterson</a>
-                <small class="d-block">Peterson.john@lumen.com</small>
-                </div>
-              </div>
-              <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Ticket Id  <a href="javascript: void(0);">LT_1021</a> </li>
-                <li class="list-inline-item"> | </li>
-                <li class="list-inline-item">Emp. Id <strong>AC223300</strong> </li>
-              </ul>
-              <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Problem Type   </li>
-                <li class="list-inline-item"><strong>Request Change Seat</strong> </li>
-              </ul>
-              <ul class="list-inline mb-1 mt-1">
-                <li class="list-inline-item">Created on <strong>06/20/2021</strong> </li>
-                <li class="list-inline-item"> | </li>
-                <li class="list-inline-item">Facility   <strong>Vikaram Singh</strong> </li>
-              </ul>
-            </div>
-            <div class="ticketFooter">
-              <div class="clearfix hgt25">
-                <div class="float-left">
-                  Medium
-                </div>
-                <div class="float-right">
-                  <ul class="list-inline mb-1 mt-1">
-                    <li class="list-inline-item">
-                      Manager  <strong>Smith, williams</strong>
-                    </li>
-                    <li class="list-inline-item">
-                      <ion-icon name="attach"></ion-icon>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
         </ion-col>
       </ion-row>
+      <ion-row *ngIf="ticketStatusData.length == 0">No Tickets</ion-row>
     </ion-grid>
   </div>
-  </ion-content>
+</ion-content>

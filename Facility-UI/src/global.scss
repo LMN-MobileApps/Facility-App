@@ -780,24 +780,40 @@ h6, .h6 {
   .w-100{
       width: 100%;
   }
+  .alignItems{
+    align-items: center;
+  }
+  .fnt-12px{
+    font-size: 12px;
+  }
   .fnt-14{
       font-size: 14px;
   }
+
   .fnt-16{
-    font-size: 14px;
+    font-size: 16px;
 }
 .fnt-18{
-    font-size: 14px;
+    font-size: 18px;
 }
 .fnt-20{
-    font-size: 14px;
+    font-size: 20px;
 }
 .acTag{
     color: #1c3766;
     font-family: 'Segoe Pro Semibold';
 }
+.cl1{
+    color: #636363;
+}
+.cl2{
+    color: #7DC844;
+}
 .clearfix{
     clear: both;
+}
+.bg1{
+    background: #FBFBFB
 }
 .float-left{
     float: left
@@ -814,10 +830,10 @@ h6, .h6 {
 
 .mainContentWidth{
     margin: auto;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
 }
 
-.facilityTickets,.commonTickets{
+.facilityTickets, .commonTickets{
     background: #38C6F4;
     border-radius: 5px;
     padding: 10px;
@@ -848,4 +864,15 @@ h6, .h6 {
     background: #fff;
     color: #000;
     box-shadow: 0px 0px 3px #dbdbdb;
+}
+.titcketHeader:after {
+    background-image: none;
+}
+.ionTitle{
+    font-size: 18px;
+}
+.arrow-back-outline{
+  position: absolute;
+  left: 8px;
+  z-index: 10;
 }

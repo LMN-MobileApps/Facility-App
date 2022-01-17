@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreateTicketPage } from './create-ticket.page';
+import { CreateTicketPage } from './create-ticket.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), IonicSelectableModule],
   exports: [RouterModule],
 })
 export class CreateTicketPageRoutingModule {}

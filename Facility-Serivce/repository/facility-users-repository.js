@@ -1,8 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var mongoCon = require('../db-connection.json');
-var user=require("../assets/user.json");
-var userRole=require("../assets/user-role.json");
-var lumenStars=require("../assets/lumen-stars.json");
+var user = require("../assets/user.json");
+var userRole = require("../assets/user-role.json");
 
 module.exports = class UserRepository {
     getAllUsers(callback) {
@@ -56,7 +55,8 @@ module.exports = class UserRepository {
             callback(false);
         }
     }
-    getRole(id,callback){
+
+    getUserDetails(id,callback){
         let i;
         for(i=0;i<userRole.length;i++)
         {
@@ -118,30 +118,43 @@ module.exports = class UserRepository {
         });
     }
 
-    getTeamAwards(callback){
-        var resArray=[];
-        lumenStars.forEach(l=>{
-            userRole.forEach(u=>{
-                if(l.userid==u.userid && u.role=="Facility Team"){
-                    resArray.push({"name":u.name,"role":u.role,"awards":l.awards});
-                }
-            });
-        });
-        callback(resArray);
-    }
-
-    getStatusTicketsForEmployee(id,callback){
+    giveFeedback(obj, callback) {
         const client = MongoClient.connect(mongoCon.mongoURL, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err) throw err;
             var dbo = db.db(mongoCon.targetDB);
     
-            dbo.collection(mongoCon.loadCollection.facility_users).find({createdBy:id}).toArray(function(err, docs) {
+            dbo.collection(mongoCon.loadCollection.facility_feedback).insertOne(obj, function(err, docs) {
                 if (err) { throw err;}
                 else {
-                    callback(docs);
+                    callback({"message": "Feedback submitted successfully!"});
                 }
                 db.close();
             });
         });
     }
+
+    getFeedback(callback) {
+        const client = MongoClient.connect(mongoCon.mongoURL, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db(mongoCon.targetDB);
+    
+            dbo.collection(mongoCon.loadCollection.facility_feedback).aggregate(
+                        [
+                            {
+                              $group: {
+                                  _id: "$ratedTo",
+                                  ratings: { $avg: "$ratings" }
+                                }
+                            }
+                        ]
+                    ).toArray(function(err, res) {
+                        if(err) throw err;
+                        else {
+                            callback(res);
+                        }
+                        db.close();
+                    });
+        });
+    }
+
 } 

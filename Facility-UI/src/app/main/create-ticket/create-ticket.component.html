@@ -1,0 +1,115 @@
+<ion-header class="titcketHeader">
+  <ion-toolbar>
+    <ion-title class="text-center ionTitle" *ngIf="loggedInUser === 'facility' || !ticketDetails">CREATE TICKET
+    </ion-title>
+    <ion-title class="text-center ionTitle" *ngIf="loggedInUser === 'employee' && ticketDetails!==null">EDIT TICKET
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgContent">
+  <div class="mainContentWidth">
+    <ion-grid>
+
+      <ion-row>
+        <ion-col size="12">
+          <div class="commonTickets">
+            <div class="t1 pt-1 text-primary" *ngIf="!ticketDetails">
+              Please enter the ticket information
+            </div>
+            <div class="formGroup text-left">
+              <ion-row>
+                <ion-col size="12" *ngIf="ticketDetails?.ticketId">
+                  <ion-input placeholder="Ticket ID" class="inputText" [value]="ticketDetails?.ticketId" readonly>
+                  </ion-input>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-list class="catg_box">
+                    <label>
+                      Problem Type*
+                    </label>
+                    <ion-item class="iconItem" [ngClass]="{'error-border-class': invalidForm && !damageType}" required>
+                      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover"
+                        [(ngModel)]="damageType">
+                        <ion-select-option *ngFor="let pTypes of problemTypes" [value]="pTypes.problemCode"
+                          [disabled]="pTypes.problemCode == 'PRO01'">{{pTypes.problemType}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+                <ion-col size="12" class="catg_box" *ngIf="damageType === 'PRO02'">
+                  <label>
+                    List of Services *
+                  </label>
+                  <ion-item class="iconItem" [ngClass]="{'error-border-class': invalidForm && !service}">
+                    <ionic-selectable item-content [(ngModel)]="service" itemValueField="serviceCode"
+                      itemTextField="serviceName" [items]="services" [canSearch]="true" (onChange)="portChange($event)"
+                      required>
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="12" class="catg_box">
+
+                  <label>
+                    Geo Location *
+                  </label>
+                  <ion-item class="iconItem" [ngClass]="{'error-border-class': invalidForm && !location}">
+                    <ionic-selectable item-content [(ngModel)]="location" itemValueField="locationCode"
+                      itemTextField="locationName" [items]="locations" [canSearch]="true"
+                      (onChange)="portChange($event)" required>
+                    </ionic-selectable>
+                    <ion-icon name="location-outline" class="location"></ion-icon>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="12" class="pb-0 mb-0" *ngIf="damageType === 'PRO03'">
+                  <label>
+                    Location of Incident *
+                  </label>
+                </ion-col>
+                <ion-col size="6" *ngIf="damageType === 'PRO03'">
+                  <ion-input placeholder="Floor No:" class="inputText" [(ngModel)]="floorNo"
+                    [ngClass]="{'error-border-class': invalidForm && !floorNo}" required></ion-input>
+                </ion-col>
+                <ion-col size="6" *ngIf="damageType === 'PRO03'">
+                  <ion-input placeholder="Seat No:" class="inputText" [(ngModel)]="seatNo"
+                    [ngClass]="{'error-border-class': invalidForm && !seatNo}" required></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                  <label>
+                    Comments
+                  </label>
+                  <ion-textarea rows="2" class="inputText" placeholder="" [(ngModel)]="comments" required>
+                  </ion-textarea>
+                </ion-col>
+                <ion-col size="12">
+                  <label>
+                    Date
+                  </label>
+                  <ion-input [(ngModel)]="date" class="inputText inputTextDisabled" disabled readonly></ion-input>
+                  <ion-icon name="calendar-outline" class="location datePic"></ion-icon>
+                </ion-col>
+                <ion-col size="12">
+                  <label>
+                    Upload Image of the Incident (Optional)
+                  </label>
+                  <ion-input class="inputText" (click)="openCamera()"></ion-input>
+                  <ion-icon name="camera-outline" class="location datePic" (click)="openCamera()"></ion-icon>
+                </ion-col>
+                <ion-col size="12" *ngIf="!ticketDetails">
+                  <ion-button class="mt-3 btnBlue" (click)="createTicket()">CREATE</ion-button>
+                  <a href="javascript: void(0);" class="d-block mt-2 mb-1 text-center fnt-16 acTag"
+                    (click)="redirectToTabs('status')">CANCEL</a>
+                </ion-col>
+                <ion-col size="12" *ngIf="ticketDetails!== null">
+                  <ion-button class="mt-3 btnBlue">Update</ion-button>
+                  <a href="javascript: void(0);" class="d-block mt-2 mb-1 text-center fnt-16 acTag">Reject Ticket</a>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

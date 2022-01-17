@@ -1,0 +1,254 @@
+<app-loader *ngIf="showLoader"></app-loader>
+<ion-header class="titcketHeader">
+  <ion-toolbar>
+    <ion-title class="text-center ionTitle">DASHBOARD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bgContent">
+  <div class="mainContentWidth">
+    <ion-grid>
+      <ion-row *ngIf="loggedInUser?.role === 'Facility Team'" (click)="redirectToStatusScreen('myTickets')">
+        <ion-col>
+          <div class="facilityTickets mt-2">
+            <div class="t1 pt-1">
+              Tickets Assigned to Me
+            </div>
+            <div class="t2">
+              {{ticketsInfo?.TicketsAssignedToMe}}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="loggedInUser?.role !== 'Employee'">
+        <ion-col size="6" (click)="redirectToStatusScreen('All')">
+          <div class="commonTickets mt-1">
+            <div class="t1 pt-1">
+              Total Tickets
+            </div>
+            <div class="t2">
+              {{ticketsInfo?.TotalTickets}}
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" (click)="redirectToStatusScreen('Pending')">
+          <div class="commonTickets mt-1">
+            <div class="t1 pt-1">
+              Pending Tickets
+            </div>
+            <div class="t2 text-pending">
+              {{ticketsInfo?.PendingTickets}}
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" (click)="redirectToStatusScreen('Resolved')">
+          <div class="commonTickets mt-1">
+            <div class="t1 pt-1">
+              Resolved Tickets
+            </div>
+            <div class="t2 text-success">
+              {{ticketsInfo?.ResolvedTickets}}
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" (click)="redirectToStatusScreen('Rejected')">
+          <div class="commonTickets mt-1">
+            <div class="t1 pt-1">
+              Rejected Tickets
+            </div>
+            <div class="t2 text-danger">
+              {{ticketsInfo?.RejectedTickets}}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="ticketGraph mt-3 p-3">
+            <div class="t3 pt-1 ticket-info-header">
+              Ticket information
+            </div>
+            <div class="text-center">
+              <ul class="list-inline mb-0 mt-3">
+                <li class="list-inline-item">
+                  <span class="leg1"></span>&nbsp;Resolved&nbsp;({{ticketsInfo?.ResolvedTickets}})
+                </li>
+                <li class="list-inline-item">
+                  <span class="leg2"></span>&nbsp;Pending&nbsp;({{ticketsInfo?.PendingTickets}})
+                </li>
+                <li class="list-inline-item">
+                  <span class="leg3"></span>&nbsp;Rejected&nbsp;({{ticketsInfo?.RejectedTickets}})
+                </li>
+              </ul>
+            </div>
+            <div class="text-center graphLength">
+              <div class="totCount">
+                {{ticketsInfo?.TotalTickets}}<br>
+                Tickets
+              </div>
+              <canvas #doughnutCanvas id="doughnut"></canvas>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="loggedInUser?.role == 'Employee'">
+        <ion-col>
+          <div class="commonTickets mt-1">
+            <div class="t3 pt-1 ticket-info-header text-left">
+              Top Rated
+            </div>
+            <ion-slides [options]="slideOptsAwards">
+              <ion-slide>
+                <div class="topratedSlide">
+                  <div class="starRated">
+                    <ion-icon name="star-outline" class="star-outline"></ion-icon>&nbsp;&nbsp;4.6
+                  </div>
+                  <div class="p-2">
+                    <div class="d-flex">
+                      <div class="fl1">
+                        <img src="https://dummyimage.com/40x40" alt="Profile Pic" />
+                      </div>
+                      <div class="fl2">
+                        <strong>Vivek, S</strong>
+                        <i class="d-block f1">Senior Facility</i>
+                      </div>
+                    </div>
+                    <ul class="list-inline mb-1 mt-1">
+                      <li class="list-inline-item">
+                        <div class="f1">Ticket Closed </div>
+                        <div class="f2">112</div>
+                      </li>
+
+                      <li class="list-inline-item">
+                        <div class="f1">New </div>
+                        <div class="f2">2</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="topratedSlide">
+                  <div class="starRated">
+                    <ion-icon name="star-outline" class="star-outline"></ion-icon>&nbsp;&nbsp;4.6
+                  </div>
+                  <div class="p-2">
+                    <div class="d-flex">
+                      <div class="fl1">
+                        <img src="https://dummyimage.com/40x40" alt="Profile Pic" />
+                      </div>
+                      <div class="fl2">
+                        <strong>Vivek, S</strong>
+                        <i class="d-block f1">Senior Facility</i>
+                      </div>
+                    </div>
+                    <ul class="list-inline mb-1 mt-1">
+                      <li class="list-inline-item">
+                        <div class="f1">Ticket Closed </div>
+                        <div class="f2">112</div>
+                      </li>
+
+                      <li class="list-inline-item">
+                        <div class="f1">New </div>
+                        <div class="f2">2</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="topratedSlide">
+                  <div class="starRated">
+                    <ion-icon name="star-outline" class="star-outline"></ion-icon>&nbsp;&nbsp;4.6
+                  </div>
+                  <div class="p-2">
+                    <div class="d-flex">
+                      <div class="fl1">
+                        <img src="https://dummyimage.com/40x40" alt="Profile Pic" />
+                      </div>
+                      <div class="fl2">
+                        <strong>Vivek, S</strong>
+                        <i class="d-block f1">Senior Facility</i>
+                      </div>
+                    </div>
+                    <ul class="list-inline mb-1 mt-1">
+                      <li class="list-inline-item">
+                        <div class="f1">Ticket Closed </div>
+                        <div class="f2">112</div>
+                      </li>
+
+                      <li class="list-inline-item">
+                        <div class="f1">New </div>
+                        <div class="f2">2</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="loggedInUser?.role == 'Employee'">
+
+        <ion-col>
+          <div class="commonTickets mt-1">
+            <div class="t3 pt-1 ticket-info-header text-left">
+              Facility Team Awards
+            </div>
+            <ion-slides [options]="slideOptstoprated">
+              <ion-slide>
+                <div class="topratedSlide facAwards">
+                  <div class="starRated">
+
+                    <ion-icon name="trophy-outline" class="star-outline"></ion-icon>
+                  </div>
+                  <div class="p-2">
+                    <div class="d-flex">
+
+                      <div class="fl2">
+                        <strong>Positive Attitude</strong>
+
+                      </div>
+                    </div>
+                    <ul class="list-inline mb-1 mt-1">
+                      <li class="list-inline-item">
+                        <div class="f2">Vivek S </div>
+                        <i class="d-block f1">Senior Facility</i>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="topratedSlide facAwards">
+                  <div class="starRated">
+
+                    <ion-icon name="trophy-outline" class="star-outline"></ion-icon>
+                  </div>
+                  <div class="p-2">
+                    <div class="d-flex">
+
+                      <div class="fl2">
+                        <strong>Positive Attitude</strong>
+
+                      </div>
+                    </div>
+                    <ul class="list-inline mb-1 mt-1">
+                      <li class="list-inline-item">
+                        <div class="f2">Vivek S </div>
+                        <i class="d-block f1">Senior Facility</i>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -6,14 +6,15 @@ import { IonicModule } from '@ionic/angular';
 
 import { CreateTicketPageRoutingModule } from './create-ticket-routing.module';
 
-import { CreateTicketPage } from './create-ticket.page';
+import { CreateTicketPage } from './create-ticket.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateTicketPageRoutingModule
+    CreateTicketPageRoutingModule, IonicSelectableModule
   ],
   declarations: [CreateTicketPage]
 })

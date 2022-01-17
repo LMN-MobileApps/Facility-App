@@ -1,0 +1,124 @@
+.graphLength {
+  width: 200px;
+  position: relative;
+  margin: 12px auto;
+  font-size: 12px;
+}
+.facilityTickets {
+  border: 1px solid #083176;
+}
+.ticketGraph {
+  .list-inline {
+    color: #083176;
+    font-size: 14px;
+    font-weight: 600;
+    .list-inline-item:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+.leg1,
+.leg2,
+.leg3 {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #007e44;
+  border-radius: 2px;
+  position: relative;
+  top: 1px;
+  span {
+    margin-right: 5px;
+  }
+}
+.leg2 {
+  background: #ff9e18;
+}
+.leg3 {
+  background: #d62015;
+}
+.totCount {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -53%);
+  font-size: 18px;
+  font-weight: 600;
+}
+.ticket-info-header {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .ticketGraph {
+    .list-inline {
+      .list-inline-item:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+.topratedSlide {
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  background: #083176;
+  text-align: left;
+  border-radius: 3px;
+  width: 250px;
+  margin: 5px 5px;
+  .star-outline {
+    color: #ffc92f;
+    font-size: 16px;
+  }
+  img {
+    height: 30px;
+    border-radius: 50px;
+  }
+  .d-flex {
+    flex-direction: row;
+    justify-content: left;
+    gap: 15px;
+    align-items: center;
+  }
+  .f1 {
+    font-size: 12px;
+    color: #dbdbdb;
+  }
+  .list-inline {
+    margin-top: 10px;
+    li {
+      width: 50%;
+      text-align: center;
+      margin-right: 0px;
+    }
+    .list-inline-item:not(:last-child) {
+      border-right: 1px solid #5e5e5e;
+    }
+  }
+  .starRated {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+}
+.facAwards {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #6d6d6d;
+  .list-inline li {
+    width: 100%;
+    text-align: left;
+  }
+  .fl2 {
+    color: #083176;
+  }
+  .f2 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .star-outline {
+    font-size: 40px;
+  }
+}

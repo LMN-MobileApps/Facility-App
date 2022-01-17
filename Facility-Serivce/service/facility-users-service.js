@@ -1,7 +1,10 @@
 const UserRepository = require("../repository/facility-users-repository");
-var user=require("../assets/user-role.json");
+const TicketRepository = require("../repository/facility-tickets-repository");
+var userRole = require("../assets/user-role.json");
 
 var userList = [];
+var closedTickets, newTickets;
+
 class UserResponse {
     userId = "";
     userRole = "";
@@ -35,13 +38,20 @@ module.exports = class UserService {
         })
     }
 
-    getRoleOfUser(id,pass,callback){
+    getUserDetails(id,pass,callback){
        var repo=new UserRepository();
        repo.getUserById(id,pass,function(result){
            if(result)
            {
-            repo.getRole(id,function(result){
-                callback(result);
+            repo.getUserDetails(id,function(result){
+                repo.getFeedback(function(feedback) {
+                    feedback.forEach(f => {
+                        if(f._id == id) {
+                            result.ratings = f.ratings;
+                        }
+                    });
+                    callback(result);
+                });
             });
            }
            else{
@@ -49,27 +59,46 @@ module.exports = class UserService {
            }
        });
     }
-    getFeedback(callback) {
+
+    giveFeedback(obj, callback) {
         var repo=new UserRepository();
-        repo.getFeedback(function(result) {
-            var resArray = [];
-            result.forEach( r => {
-                user.forEach( u => {
-                    if(u.userid == r._id) {
-                        closedTickets=getClosedTickets(r._id,"Resolved");
-                        pendingTickets=getClosedTickets(r._id,"Pending");
-                        resArray.push({"userId": r._id, "name": u.name, "ratings": parseFloat(r.ratings.toFixed(2)), "role": u.role});
-                    }
-                });
-            });
-            callback(resArray);
+        repo.giveFeedback(obj, function(result) {
+            callback(result);
         });
     }
 
-    getTeamAwards(callback){
+    getFeedback(callback) {
         var repo=new UserRepository();
-        repo.getTeamAwards(function(res){
-            callback(res);
-        })
+        var ticketRepo = new TicketRepository();
+
+        ticketRepo.getTicketsWithStatusTypeAndProblemType(function(res) {
+            repo.getFeedback(function(result) {
+                let resArray = [];
+                closedTickets = 0, newTickets = 0;
+                for( let r = 0; r < result.length; r++) {
+                    for( let u = 0; u < userRole.length; u++) {
+                        if(userRole[u].userid == result[r]._id) {
+                            var allTickets = res;
+                            for( let at = 0; at < allTickets.length; at++) {
+                                if(allTickets[at].assignedTo == result[r]._id) {
+                                    if(allTickets[at].statusType[0].statusType == "Pending") {
+                                        newTickets++;
+                                    }
+                                    else if (allTickets[at].statusType[0].statusType == "Resolved" || allTickets[at].statusType[0].statusType == "Rejected") {
+                                        closedTickets++;
+                                    }
+                                }
+                            }
+                            let temp = {}
+                            temp = {"userId": result[r]._id, "name": userRole[u].name, "ratings": parseFloat(result[r].ratings.toFixed(2)), "role": userRole[u].role, "closedTickets": closedTickets, "newTickets": newTickets};
+                            closedTickets = newTickets = 0;
+                            resArray.push(temp);
+                        }
+                    }
+                }
+                callback(resArray);
+            });
+        });
     }
+ 
 }

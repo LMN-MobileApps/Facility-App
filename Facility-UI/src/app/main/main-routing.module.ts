@@ -11,7 +11,7 @@ const routes: Routes = [
 		  [
 			{
 				path: 'dashboard',
-				loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+				loadChildren: () => import('../main/dashboard/dashboard.module').then( m => m.DashboardPageModule)
 			  },
 			  {
 				path: 'create-ticket',
@@ -19,13 +19,12 @@ const routes: Routes = [
 			  },
 			  {
 				path: 'status',
-				loadChildren: () => import('./status/status.module').then( m => m.StatusPageModule)
+				loadChildren: () => import('../main/status/status.module').then( m => m.StatusPageModule)
 			  },
 			  {
 				path: 'settings',
 				loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
 			  },
-			
 	  ]
   },
   {

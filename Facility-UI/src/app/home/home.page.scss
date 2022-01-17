@@ -23,16 +23,13 @@
      flex-direction: column;
      width: 100%;
      align-items: center;
-
-   
- 
  }
  
- ion-button{
+ .btnWhite{
      --border-radius: 50px;
      width: 100%;
    }
-ion-button::part(native){
+.btnWhite::part(native){
    background: #fff;
    color: #0C9ED9;
    border: 2px solid #fff;
