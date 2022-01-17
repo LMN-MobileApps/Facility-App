@@ -2,29 +2,44 @@
     "userid":"AC96702",
     "name":"Aditya Singh",
     "email": "adityaSingh@lumen.com",
-    "role":"Employee"
+    "role":"Employee",
+    "Dob":"1999-10-07",
+    "address":"711-2880 Nulla St. Mankato Mississippi",
+    "contactNo":"9876543211"
 },
 {
     "userid":"AC96703",
     "name":"Abhishek Mehra",
     "email": "abhishekMehra@lumen.com",
-    "role":"Employee"
+    "role":"Employee",
+    "Dob":"1992-10-17",
+    "address":"606-3727 Ullamcorper. Street Roseville NH 11523",
+    "contactNo":"9876543211"
 },
 {
     "userid":"AC96704",
     "name":"Administrator",
     "email": "adityaSingh@lumen.com",
-    "role":"Admin"
+    "role":"Admin",
+    "Dob":"1989-08-21",
+    "address":"Ap #867-859 Sit Rd. Azusa New York 39531",
+    "contactNo":"9876543211"
 },
 {
     "userid":"AC96705",
     "name":"Vivek Satyam",
     "email": "vivekSatyam@lumen.com",
-    "role":"Facility Team"
+    "role":"Facility Team",
+    "Dob":"1991-02-17",
+    "address":"P.O. Box 147 2546 Sociosqu Rd.Bethlehem Utah 02913",
+    "contactNo":"9876543211"
 },
 {
     "userid":"AC96706",
     "name":"Vikram Singh",
     "email": "vikramSingh@lumen.com",
-    "role":"Facility Team"
+    "role":"Facility Team",
+    "Dob":"1990-05-15",
+    "address":"Ap #285-7193 Ullamcorper Avenue Amesbury HI 93373",
+    "contactNo":"9876543211"
 }]
