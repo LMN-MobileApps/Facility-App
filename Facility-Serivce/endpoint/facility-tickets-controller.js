@@ -30,6 +30,13 @@ router.post('/dashboardFilter', function(req, res) {
     });
 });
 
+router.post('/status', function(req, res) {
+    var svc = new TicketService();
+    svc.getStatusTickets(req.body.id, function(result) {
+        res.send(result);
+    });
+});
+
 router.put('/editTicket', function(req, res) {
     var svc = new TicketService();
     svc.editTicket(req.body, function(result) {
