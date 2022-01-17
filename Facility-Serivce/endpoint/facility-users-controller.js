@@ -39,12 +39,6 @@ router.get('/getTopRated', function(req, res) {
     })
 });
 
-router.get('/getTopRated', function(req, res)
- { var svc = new UserService();
-     svc.getFeedback( function(result) {
-         res.send(result); })});
-
-
 router.get('/teamAwards', function(req, res){
     var svc = new UserService();
     svc.getTeamAwards(function(result) {
