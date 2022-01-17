@@ -100,5 +100,12 @@ module.exports = class UserService {
             });
         });
     }
+    
+    getTeamAwards(callback){
+        var repo=new UserRepository();
+        repo.getTeamAwards(function(res){
+            callback(res);
+        });
+    }
  
 }
