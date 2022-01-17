@@ -16,6 +16,13 @@ router.post('/createTicket', function(req, res) {
     });
 });
 
+router.post('/dashboard', function(req, res) {
+    var svc = new TicketService();
+    svc.dashboard(req.body.id, function(result) {
+        res.send(result);
+    });
+});
+
 router.post('/dashboardFilter', function(req, res) {
     var svc = new TicketService();
     svc.getCategoryTicketsCount(req.body.category, req.body.userId, function(result) {
