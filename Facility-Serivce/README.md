@@ -6,6 +6,8 @@ $  cd Facility-Service
 
 $  npm install
 
+$  `node server.js` to run backend application.
+
 ---
 
 ## Summary:
